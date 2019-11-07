@@ -101,3 +101,5 @@ source $ZSH/oh-my-zsh.sh
 export DEBIAN_FRONTEND="readline"
 export DOCKER_HOST="tcp://localhost:2375"
 export EDITOR="nano"
+
+export PATH="$PATH:$HOME/.local/bin"
