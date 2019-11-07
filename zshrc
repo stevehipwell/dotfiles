@@ -97,3 +97,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export DEBIAN_FRONTEND="readline"
+export DOCKER_HOST="tcp://localhost:2375"
