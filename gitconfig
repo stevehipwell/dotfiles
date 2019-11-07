@@ -1,0 +1,14 @@
+[user]
+	name = Steve Hipwell
+	email = steve.hipwell@gmail.com
+
+[core]
+	ignorecase = false
+	autocrlf = input
+
+[push]
+	default = simple
+
+[protocol]
+	version = 2
+
