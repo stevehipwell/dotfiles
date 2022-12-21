@@ -1,0 +1,46 @@
+[user]
+	name = {{ .name }}
+	email = {{ if .work.enabled }}{{ .work.email }}{{ else }}{{ .email }}{{ end }}
+	signingkey = ~/.ssh/id_ed25519.pub
+[core]
+{{- if eq .chezmoi.os "windows" }}
+  fsmonitor = true
+	sshCommand = 'C:/Program Files/OpenSSH/ssh.exe'
+{{- end }}
+	ignorecase = false
+	autocrlf = input
+	editor = code --wait
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[difftool]
+	prompt = false
+[mergetool]
+	trustExitCode = true
+[protocol]
+	version = 2
+{{- if eq .chezmoi.os "windows" }}
+[http]
+	sslBackend = schannel
+{{- end }}
+[init]
+	defaultBranch = main
+[checkout]
+	defaultRemote = origin
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+  sort = version:refname
+{{- if .work.enabled }}
+[includeIf "gitdir:~/Code/github.com/stevehipwell/"]
+  path = ~/.personal.gitconfig
+[includeIf "gitdir:~/Code/gitlab.com/"]
+  path = ~/.personal.gitconfig
+{{- end }}

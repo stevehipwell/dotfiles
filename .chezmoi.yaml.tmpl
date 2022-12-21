@@ -1,0 +1,12 @@
+{{- $work := promptString "work" -}}
+git:
+  autoCommit: false
+  autoPush: false
+
+data:
+  name: Steve Hipwell
+  email: steve.hipwell@gmail.com
+
+  work:
+    enabled: {{ $work }}
+    email: steve.hipwell@lexisnexisrisk.com

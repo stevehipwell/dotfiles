@@ -1,0 +1,10 @@
+{{- if eq .chezmoi.os "windows" }}
+.zprofile
+.zshenv
+.zshrc
+{{- else if .chezmoi.kernel.osrelease | lower | contains "microsoft" }}
+{{- end }}
+
+{{- if not .work.enabled }}
+.personal.gitconfig
+{{- end }}
