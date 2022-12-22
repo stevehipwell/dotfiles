@@ -2,7 +2,10 @@
 .zprofile
 .zshenv
 .zshrc
-{{- else if .chezmoi.kernel.osrelease | lower | contains "microsoft" }}
+{{- else }}
+*.ps1
+{{- if .chezmoi.kernel.osrelease | lower | contains "microsoft" }}
+{{- end }}
 {{- end }}
 
 {{- if not .work.enabled }}

@@ -1,0 +1,52 @@
+# Load modules
+Import-Module posh-git
+
+# Settings
+$GitPromptSettings.DefaultPromptPrefix = 'PS '
+$GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
+
+function Invoke-Starship-PreCommand {
+  $host.ui.Write("`e]0; PS> $(if ($IsAdmin) {'Administrator: '} else {''})$(Get-PromptPath) `a")
+}
+Invoke-Expression (&starship init powershell)
+
+# Commands
+nvs use | Out-Null
+
+# Functions
+function Refresh-EnvironmentVariable($Value) {
+  Set-Item "Env:${Value}" "$([Environment]::GetEnvironmentVariable($Value, 'User'))"
+}
+
+function Get-AWSProfile() {
+  echo $Env:AWS_PROFILE
+}
+
+function Set-AWSProfile($Value) {
+  [Environment]::SetEnvironmentVariable('AWS_PROFILE', $Value, 'User')
+  $Env:AWS_PROFILE = $Value
+}
+
+function Get-AWSDefaultRegion() {
+  echo $Env:AWS_DEFAULT_REGION
+}
+
+function Set-AWSDefaultRegion($Value) {
+  [Environment]::SetEnvironmentVariable('AWS_DEFAULT_REGION', $Value, 'User')
+  $Env:AWS_DEFAULT_REGION = $Value
+}
+
+function Get-VaultToken() {
+  echo $Env:VAULT_TOKEN
+}
+
+function Set-VaultToken($Value) {
+  If ($Value -eq $null) {
+    $Value = "$(vault login -token-only -method=ldap -path=ldap/b2b username=hipwells)"
+  }
+  [Environment]::SetEnvironmentVariable('VAULT_TOKEN', $value, 'User')
+  $Env:VAULT_TOKEN = $value
+}
+
+# Aliases
+Set-Alias -Name k -Value kubectl

@@ -1,0 +1,129 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Define format
+format = """
+$username\
+$hostname\
+$localip\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$package\
+$memory_usage\
+$aws\
+$env_var\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$time\
+$container\
+$shell\
+$character"""
+
+[aws]
+symbol = "  "
+format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+disabled = true
+
+[character]
+format = '$symbol '
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"
+disabled = false
+
+[cmd_duration]
+format = '\[[祥 $duration]($style)\]'
+disabled = true
+
+[container]
+symbol = "⬢"
+format = '[$symbol \[$name\]]($style) '
+disabled = false
+
+[directory]
+truncation_length = 3
+truncation_symbol = ".../"
+truncate_to_repo = true
+read_only = " "
+use_os_path_sep = false
+disabled = false
+
+[git_branch]
+symbol = " "
+format = '\[[$symbol$branch(:$remote_branch)]($style)\] '
+disabled = false
+
+[git_commit]
+commit_hash_length = 4
+only_detached = true
+tag_disabled = true
+tag_symbol = " "
+disabled = false
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+disabled = false
+
+[git_status]
+format = '([$conflicted$stashed$deleted$renamed$modified$staged$untracked$ahead_behind]($style))'
+up_to_date = ""
+ahead = '⇡ $count '
+behind = '⇣ $count '
+deleted = ' $count '
+diverged = ' ⇡${ahead_count}⇣${behind_count} '
+stashed = ' $count '
+modified = ' $count '
+staged = '[ $count ](green)'
+renamed = ' $count '
+untracked = ' $count '
+disabled = false
+
+[hostname]
+ssh_only = true
+disabled = false
+
+[kubernetes]
+symbol = "☸ "
+format = '\[[$symbol$context( \($namespace\))]($style)\]'
+disabled = true
+
+[line_break]
+disabled = true
+
+[localip]
+ssh_only = true
+disabled = false
+
+[memory_usage]
+symbol = " "
+format = '\[$symbol[$ram( | $swap)]($style)\]'
+disabled = true
+
+[package]
+symbol = " "
+format = '\[[$symbol$version]($style)\]'
+disabled = false
+
+[shell]
+disabled = true
+
+[sudo]
+format = '\[[as $symbol]\]'
+disabled = false
+
+[time]
+format = '[\[祥 $time\]]($style)'
+disabled = true
+
+[username]
+format = '\[[$user]($style)\]'
+disabled = false
