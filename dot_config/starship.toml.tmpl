@@ -38,7 +38,7 @@ disabled = true
 format = '$symbol '
 success_symbol = "[](bold green)"
 error_symbol = "[](bold red)"
-disabled = false
+disabled = true
 
 [cmd_duration]
 format = '\[[祥 $duration]($style)\]'
@@ -47,7 +47,7 @@ disabled = true
 [container]
 symbol = "⬢"
 format = '[$symbol \[$name\]]($style) '
-disabled = false
+disabled = {{ if eq .chezmoi.hostname "penguin" }}true{{ else }}false{{ end }}
 
 [directory]
 truncation_length = 3
@@ -117,8 +117,8 @@ disabled = false
 disabled = true
 
 [sudo]
-format = '\[[as $symbol]\]'
-disabled = false
+format = '\[[as $symbol]($style)\]'
+disabled = {{ if eq .chezmoi.hostname "penguin" }}true{{ else }}false{{ end }}
 
 [time]
 format = '[\[祥 $time\]]($style)'

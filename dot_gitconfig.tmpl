@@ -1,7 +1,9 @@
 [user]
 	name = {{ .name }}
 	email = {{ if .work.enabled }}{{ .work.email }}{{ else }}{{ .email }}{{ end }}
-	signingkey = ~/.ssh/id_ed25519.pub
+{{- if .git.sign }}
+	signingkey = {{ printf "%s.pub" (default .key .git.signKey) }}
+{{- end }}
 [core]
 {{- if eq .chezmoi.os "windows" }}
   fsmonitor = true
@@ -32,12 +34,14 @@
 	defaultBranch = main
 [checkout]
 	defaultRemote = origin
+[tag]
+  sort = version:refname
+{{- if .git.sign }}
 [gpg]
 	format = ssh
 [commit]
 	gpgsign = true
-[tag]
-  sort = version:refname
+{{- end }}
 {{- if .work.enabled }}
 [includeIf "gitdir:~/Code/github.com/stevehipwell/"]
   path = ~/.personal.gitconfig

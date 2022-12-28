@@ -2,9 +2,11 @@
 .zprofile
 .zshenv
 .zshrc
+.zsh_plugins.txt
 {{- else }}
 *.ps1
 {{- if .chezmoi.kernel.osrelease | lower | contains "microsoft" }}
+{{- else if eq .chezmoi.hostname "penguin" }}
 {{- end }}
 {{- end }}
 
