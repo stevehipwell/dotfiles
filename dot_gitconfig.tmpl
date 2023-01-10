@@ -32,8 +32,12 @@
 {{- end }}
 [init]
 	defaultBranch = main
+[pull]
+  ff = only
 [checkout]
 	defaultRemote = origin
+[merge]
+  ff = only
 [tag]
   sort = version:refname
 {{- if .git.sign }}
