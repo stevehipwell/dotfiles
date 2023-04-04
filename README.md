@@ -31,6 +31,7 @@ Install the following components.
 - [PowerShell Core](https://github.com/PowerShell/PowerShell)
 - [OpenSSH](https://github.com/PowerShell/Win32-OpenSSH)
 - [Git](https://git-scm.com/download/win)
+- [7zip](https://www.7-zip.org/)
 - [Windows Terminal](https://github.com/microsoft/terminal)
 - [VS Code](https://code.visualstudio.com/download)
 - [Scoop](https://scoop-docs.vercel.app/)
