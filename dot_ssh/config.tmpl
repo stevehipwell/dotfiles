@@ -1,1 +1,4 @@
-IdentityFile {{ .key }}
+Host *
+  IdentityFile {{ .key }}
+  AddKeysToAgent yes
+	IdentitiesOnly yes

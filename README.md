@@ -29,12 +29,19 @@ Configure Windows with the following changes.
 Install the following components.
 
 - [PowerShell Core](https://github.com/PowerShell/PowerShell)
+- [7zip](https://www.7-zip.org/)
 - [OpenSSH](https://github.com/PowerShell/Win32-OpenSSH)
 - [Git](https://git-scm.com/download/win)
-- [7zip](https://www.7-zip.org/)
 - [Windows Terminal](https://github.com/microsoft/terminal)
 - [VS Code](https://code.visualstudio.com/download)
+- [Notepad++](https://notepad-plus-plus.org/downloads/)
 - [Scoop](https://scoop-docs.vercel.app/)
+
+Create a SSH key with the following command and add it to GitHub.
+
+```shell
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
+```
 
 #### Install Chezmoi
 
