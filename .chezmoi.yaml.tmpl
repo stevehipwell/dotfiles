@@ -1,4 +1,5 @@
-{{- $work := promptBool "Work machine?" -}}
+{{- $sign := promptBool "Git sign" -}}
+{{- $work := promptBool "Work machine" -}}
 git:
   autoCommit: false
   autoPush: false
@@ -9,8 +10,8 @@ data:
   key: ~/.ssh/id_ed25519
 
   git:
-    sign: false
-    signKey:
+    sign: {{ $sign }}
+    signKey: ~/.ssh/id_ed25519
 
   work:
     enabled: {{ $work }}
