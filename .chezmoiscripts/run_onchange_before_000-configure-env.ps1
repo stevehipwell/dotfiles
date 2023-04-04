@@ -10,6 +10,3 @@ $ErrorActionPreference = "Stop"
 [Environment]::SetEnvironmentVariable('VAULT_ADDR', '', 'User')
 [Environment]::SetEnvironmentVariable('VAULT_TOKEN', '', 'User')
 [Environment]::SetEnvironmentVariable('WSLENV', 'AWS_DEFAULT_REGION/u:AWS_PROFILE/u:GHCR_TOKEN/u:SAML2AWS_USERNAME/u:VAULT_ADDR/u:VAULT_TOKEN/u', 'User')
-
-export DOCKER_BUILDKIT="1"
-export COMPOSE_DOCKER_CLI_BUILD="1"
