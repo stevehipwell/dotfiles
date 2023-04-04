@@ -1,12 +1,22 @@
+.editorconfig
+README.md
+
 {{- if eq .chezmoi.os "windows" }}
+# Windows
 .zprofile
 .zshenv
 .zshrc
 .zsh_plugins.txt
+.sh
+
 {{- else }}
-*.ps1
+# ALL Linux
+.ps1
+
 {{- if .chezmoi.kernel.osrelease | lower | contains "microsoft" }}
-{{- else if eq .chezmoi.hostname "penguin" }}
+# WSL 2
+{{- else }}
+# NOT WSL 2
 {{- end }}
 {{- end }}
 

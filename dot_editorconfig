@@ -16,3 +16,10 @@ trim_trailing_whitespace = false
 [{go.mod,go.sum,*.go}]
 indent_style = tab
 indent_size = 2
+
+[*.sh]
+binary_next_line   = true
+switch_case_indent = true
+space_redirects    = true
+keep_padding       = true
+function_next_line = true

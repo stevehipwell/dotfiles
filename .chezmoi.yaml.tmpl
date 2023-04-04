@@ -1,4 +1,4 @@
-{{- $work := promptString "work" -}}
+{{- $work := promptBool "Work machine?" -}}
 git:
   autoCommit: false
   autoPush: false
@@ -15,3 +15,9 @@ data:
   work:
     enabled: {{ $work }}
     email: steve.hipwell@lexisnexisrisk.com
+
+interpreters:
+  ps1:
+    command: pwsh
+    args:
+      - "-NoLogo"
