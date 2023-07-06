@@ -49,6 +49,8 @@
 {{- if .work.enabled }}
 [includeIf "gitdir:~/Code/github.com/stevehipwell/"]
   path = ~/.personal.gitconfig
+[includeIf "gitdir:~/Code/github.com/action-stars/"]
+  path = ~/.personal.gitconfig
 [includeIf "gitdir:~/Code/gitlab.com/"]
   path = ~/.personal.gitconfig
 {{- end }}

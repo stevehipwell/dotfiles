@@ -68,5 +68,14 @@ Or you can use the following commands to view the changes before applying them.
 
 ```shell
 chezmoi git pull -- --autostash --rebase && chezmoi diff
+```
+
+```shell
 chezmoi apply
+```
+
+To open the config in VS Code you can run the following command.
+
+```shell
+code ~/.local/share/chezmoi
 ```
