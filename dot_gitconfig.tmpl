@@ -1,9 +1,7 @@
 [user]
 	name = {{ .name }}
 	email = {{ if .work.enabled }}{{ .work.email }}{{ else }}{{ .email }}{{ end }}
-{{- if .git.sign }}
 	signingkey = {{ printf "%s.pub" (default .key .git.signKey) }}
-{{- end }}
 [core]
 {{- if eq .chezmoi.os "windows" }}
   fsmonitor = true
@@ -40,9 +38,9 @@
   ff = only
 [tag]
   sort = version:refname
-{{- if .git.sign }}
 [gpg]
 	format = ssh
+{{- if .git.autoSign }}
 [commit]
 	gpgsign = true
 {{- end }}
