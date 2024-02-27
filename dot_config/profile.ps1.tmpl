@@ -36,6 +36,11 @@ function Set-AWSDefaultRegion($Value) {
   $Env:AWS_DEFAULT_REGION = $Value
 }
 
+function Set-VaultAddr($Value) {
+  [Environment]::SetEnvironmentVariable('VAULT_ADDR', $Value, 'User')
+  $Env:VAULT_ADDR = $Value
+}
+
 function Get-VaultToken() {
   echo $Env:VAULT_TOKEN
 }

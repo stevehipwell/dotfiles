@@ -1,7 +1,7 @@
 [user]
 	name = {{ .name }}
-	email = {{ if .work.enabled }}{{ .work.email }}{{ else }}{{ .email }}{{ end }}
-	signingkey = {{ printf "%s.pub" (default .key .git.signKey) }}
+	email = {{ .email }}
+	signingkey = {{ printf "%s.pub" .key }}
 [core]
 {{- if eq .chezmoi.os "windows" }}
   fsmonitor = true
@@ -10,6 +10,8 @@
 	ignorecase = false
 	autocrlf = input
 	editor = code --wait
+[gpg]
+	format = ssh
 [diff]
 	tool = vscode
 [difftool "vscode"]
@@ -36,19 +38,15 @@
 	defaultRemote = origin
 [merge]
   ff = only
-[tag]
-  sort = version:refname
-[gpg]
-	format = ssh
-{{- if .git.autoSign }}
+[rebase]
+	autoStash = true
 [commit]
 	gpgsign = true
-{{- end }}
+[tag]
+  sort = version:refname
 {{- if .work.enabled }}
-[includeIf "gitdir:~/Code/github.com/stevehipwell/"]
-  path = ~/.personal.gitconfig
-[includeIf "gitdir:~/Code/github.com/action-stars/"]
-  path = ~/.personal.gitconfig
-[includeIf "gitdir:~/Code/gitlab.com/"]
-  path = ~/.personal.gitconfig
+[includeIf "gitdir:{{ .git.path }}/github.com/lexisnexis-iac/"]
+  path = ~/.work.gitconfig
+[includeIf "gitdir:{{ .git.path }}/github.com/lexisnexis-rba/"]
+  path = ~/.work.gitconfig
 {{- end }}
