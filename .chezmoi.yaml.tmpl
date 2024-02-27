@@ -9,7 +9,7 @@ data:
   key: ~/.ssh/id_ed25519
 
   git:
-    path: {{- if eq .chezmoi.os "windows" }}~/Code{{ else }}~/code{{ end }}
+    path: {{ if eq .chezmoi.os "windows" }}~/Code{{ else }}~/code{{ end }}
 
   work:
     enabled: {{ $work }}
