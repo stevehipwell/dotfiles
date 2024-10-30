@@ -54,4 +54,9 @@ function Set-VaultToken($Value) {
 }
 
 # Aliases
+Set-Alias -Name docker -Value podman
 Set-Alias -Name k -Value kubectl
+
+# Completion
+kubectl completion powershell | Out-String | Invoke-Expression
+Register-ArgumentCompleter -CommandName k -ScriptBlock $__kubectlCompleterBlock

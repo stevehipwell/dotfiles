@@ -8,16 +8,9 @@ README.md
 .zshrc
 .zsh_plugins.txt
 .sh
-
 {{- else }}
 # ALL Linux
 .ps1
-
-{{- if .chezmoi.kernel.osrelease | lower | contains "microsoft" }}
-# WSL 2
-{{- else }}
-# NOT WSL 2
-{{- end }}
 {{- end }}
 
 {{- if not .work.enabled }}

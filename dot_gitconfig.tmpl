@@ -1,17 +1,17 @@
 [user]
-	name = {{ .name }}
-	email = {{ .email }}
-	signingkey = {{ printf "%s.pub" .key }}
+  name = {{ .name }}
+  email = {{ .email }}
+  signingkey = {{ printf "%s.pub" .key }}
 [core]
 {{- if eq .chezmoi.os "windows" }}
   fsmonitor = true
-	sshCommand = 'C:/Program Files/OpenSSH/ssh.exe'
+  sshCommand = 'C:/Program Files/OpenSSH/ssh.exe'
 {{- end }}
-	ignorecase = false
-	autocrlf = input
-	editor = code --wait
+  ignorecase = false
+  autocrlf = input
+  editor = code --wait
 [gpg]
-	format = ssh
+  format = ssh
 [diff]
 	tool = vscode
 [difftool "vscode"]
@@ -34,16 +34,26 @@
 	defaultBranch = main
 [pull]
   ff = only
+[push]
+  autoSetupRemote = true
 [checkout]
 	defaultRemote = origin
 [merge]
   ff = only
 [rebase]
 	autoStash = true
+	updateRefs = true
 [commit]
 	gpgsign = true
 [tag]
   sort = version:refname
+[alias]
+  st = status -sb
+  ll = log --oneline
+  last = log -1 HEAD --stat
+  hist = log --graph --abbrev-commit --decorate --date=short \
+    --format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
+    --branches --remotes --tags
 {{- if .work.enabled }}
 [includeIf "gitdir:{{ .git.path }}/github.com/lexisnexis-iac/"]
   path = ~/.work.gitconfig

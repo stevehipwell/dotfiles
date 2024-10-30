@@ -36,6 +36,7 @@ Install the following components.
 - [VS Code](https://code.visualstudio.com/download)
 - [Notepad++](https://notepad-plus-plus.org/downloads/)
 - [Scoop](https://scoop-docs.vercel.app/)
+- [Starship](https://starship.rs/)
 
 Create a SSH key with the following command and add it to GitHub.
 
