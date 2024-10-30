@@ -8,9 +8,45 @@ This repo is intended to be consumed by [chezmoi](https://www.chezmoi.io/) to co
 
 The following installation guides can be followed to configure a new machine.
 
-### Linux
+### Debian
+
+#### WSL2
 
 TBC.
+
+#### Prerequisites
+
+Run the following script to configure `apt` packages.
+
+```shell
+sudo apt update && sudo apt upgrade -y
+apt install build-essential procps curl file git
+```
+
+Install the following components.
+
+- [Homebrew](https://docs.brew.sh/Homebrew-on-Linux)
+
+Run the following script to add additional packages.
+
+```shell
+brew install starship
+```
+
+Create a SSH key with the following command and add it to GitHub.
+
+```shell
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
+```
+
+#### Install Chezmoi
+
+Run the following commands to install and initialise _chezmoi_.
+
+```shell
+brew install chezmoi
+chezmoi init --apply git@github.com:stevehipwell/dotfiles.git
+```
 
 ### Windows
 

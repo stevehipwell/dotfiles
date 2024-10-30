@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+starship_precmd_user_func="set_win_title"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(starship init bash)"
