@@ -13,38 +13,38 @@
 [gpg]
   format = ssh
 [diff]
-	tool = vscode
+  tool = vscode
 [difftool "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+  cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
-	tool = vscode
+  tool = vscode
 [mergetool "vscode"]
-	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [difftool]
-	prompt = false
+  prompt = false
 [mergetool]
-	trustExitCode = true
+  trustExitCode = true
 [protocol]
-	version = 2
+  version = 2
 {{- if eq .chezmoi.os "windows" }}
 [http]
-	sslBackend = schannel
+  sslBackend = schannel
 {{- end }}
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [pull]
   ff = only
 [push]
   autoSetupRemote = true
 [checkout]
-	defaultRemote = origin
+  defaultRemote = origin
 [merge]
   ff = only
 [rebase]
-	autoStash = true
-	updateRefs = true
+  autoStash = true
+  updateRefs = true
 [commit]
-	gpgsign = true
+  gpgsign = true
 [tag]
   sort = version:refname
 [alias]
