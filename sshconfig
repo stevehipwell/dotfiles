@@ -1,4 +1,4 @@
 Host *
-  IdentityFile {{ .key }}
+  IdentityFile {{sshKey}}
   AddKeysToAgent yes
   IdentitiesOnly yes
