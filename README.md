@@ -2,17 +2,13 @@
 
 ## Overview
 
-This repo is intended to be consumed by [chezmoi](https://www.chezmoi.io/) to configure machines.
+This repo is intended to be consumed by [dotter](https://github.com/SuperCuber/dotter) to configure machines.
 
 ## Installation
 
 The following installation guides can be followed to configure a new machine.
 
 ### Debian
-
-#### WSL2
-
-TBC.
 
 #### Prerequisites
 
@@ -37,15 +33,6 @@ Create a SSH key with the following command and add it to GitHub.
 
 ```shell
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
-```
-
-#### Install Chezmoi
-
-Run the following commands to install and initialise _chezmoi_.
-
-```shell
-brew install chezmoi
-chezmoi init --apply git@github.com:stevehipwell/dotfiles.git
 ```
 
 ### Windows
@@ -78,41 +65,4 @@ Create a SSH key with the following command and add it to GitHub.
 
 ```shell
 ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519
-```
-
-#### Install Chezmoi
-
-Run the following commands to install and initialise _chezmoi_.
-
-```shell
-scoop install chezmoi
-chezmoi init --apply git@github.com:stevehipwell/dotfiles.git
-```
-
-### WSL 2
-
-TBC.
-
-## Daily Operations
-
-You can use the following command to keep a machine updated.
-
-```shell
-chezmoi update
-```
-
-Or you can use the following commands to view the changes before applying them.
-
-```shell
-chezmoi git pull -- --autostash --rebase && chezmoi diff
-```
-
-```shell
-chezmoi apply
-```
-
-To open the config in VS Code you can run the following command.
-
-```shell
-code ~/.local/share/chezmoi
 ```
