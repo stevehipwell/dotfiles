@@ -1,0 +1,18 @@
+layout {
+  pane split_direction="vertical" {
+    pane command="hx" size="60%" {
+      args "."
+    }
+    pane split_direction="horizontal" {
+      {{- if eq .chezmoi.os "windows" }}
+      pane command="pwsh" name="shell" {
+        args "-nologo"
+      }
+      {{- else }}
+      pane name="shell"
+      {{- end }}
+      pane command="copilot" name="copilot" {
+      }
+    }
+  }
+}

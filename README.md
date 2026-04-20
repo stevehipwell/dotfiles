@@ -133,7 +133,7 @@ mise install
 
 ### Linux / WSL2
 
-```bash
+```shell
 # Install chezmoi and apply
 brew install chezmoi
 chezmoi init --apply hipwells
@@ -149,7 +149,7 @@ This will:
 
 After apply:
 
-```bash
+```shell
 # Install mise-managed runtimes and tools
 mise install
 
@@ -200,7 +200,7 @@ Add to the work-conditional block at the bottom of `dot_gitconfig.tmpl`:
 
 ### Adding a new dotfile
 
-```bash
+```shell
 # Add an existing file to chezmoi
 chezmoi add ~/.some-config
 
@@ -214,7 +214,7 @@ Chezmoi uses naming conventions: `dot_` → `.`, `.tmpl` → template, `symlink_
 
 ### Mise
 
-```bash
+```shell
 mise install          # Install all tools defined in config.toml
 mise upgrade          # Upgrade all tools to latest matching versions
 mise upgrade go node  # Upgrade specific tools
@@ -227,7 +227,7 @@ For pinned versions (e.g. `hugo`, `terraform`), update the version in `dot_confi
 
 ### Chezmoi
 
-```bash
+```shell
 chezmoi diff          # Preview what would change
 chezmoi apply         # Apply changes to home directory
 chezmoi edit          # Open source dir in $EDITOR (Helix)
@@ -240,13 +240,13 @@ chezmoi doctor        # Diagnose issues
 
 After editing files in the source directory, apply with:
 
-```bash
+```shell
 chezmoi apply
 ```
 
 To commit and push changes:
 
-```bash
+```shell
 chezmoi cd
 git add -A && git commit -m "description" && git push
 ```
@@ -269,7 +269,7 @@ git add -A && git commit -m "description" && git push
 
 ### Helix
 
-```
+```shell
 hx <file>             # Open file
 hx .                  # Open file picker in current directory
 ```
@@ -363,7 +363,7 @@ Key bindings:
 
 ### Git
 
-```bash
+```shell
 g st                  # git status -sb
 g ll                  # git log --oneline
 g last                # Last commit details

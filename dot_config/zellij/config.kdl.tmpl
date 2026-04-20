@@ -4,7 +4,12 @@ default_layout "compact"
 pane_frames false
 simplified_ui true
 mouse_mode false
+
+{{- if eq .chezmoi.os "windows" }}
+# Windows
 default_shell "pwsh"
+layout_dir "{{ .chezmoi.homeDir }}/.config/zellij/layouts"
+{{- end }}
 
 # Behavior
 on_force_close detach
