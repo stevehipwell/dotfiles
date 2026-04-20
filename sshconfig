@@ -1,4 +1,0 @@
-Host *
-  IdentityFile {{sshKey}}
-  AddKeysToAgent yes
-  IdentitiesOnly yes
