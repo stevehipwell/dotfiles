@@ -1,0 +1,11 @@
+[user]
+  email = {{ .work.email }}
+  signingkey = {{ printf "%s.pub" .work.key }}
+[url "git@lnrisk.github.com"]
+  insteadOf = git@github.com
+[url "ssh://git@lnrisk.github.com"]
+  insteadOf = ssh://git@github.com
+[url "ssh://git@lnrisk.github.com"]
+  insteadOf = https://github.com/
+[url "ssh://git@lnrisk.github.com"]
+  insteadOf = git::https://github.com/

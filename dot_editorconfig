@@ -1,0 +1,28 @@
+# Editor configuration, see https://editorconfig.org
+root = true
+
+# Default
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+end_of_line = lf
+max_line_length = off
+
+# Markdown uses whitespace for formatting
+[*.md]
+trim_trailing_whitespace = false
+
+# Go must use tabs
+[{go.mod,go.sum,*.go}]
+indent_style = tab
+indent_size = 2
+
+[*.sh]
+binary_next_line   = true
+switch_case_indent = true
+space_redirects    = true
+keep_padding       = true
+function_next_line = true

@@ -1,0 +1,47 @@
+# Single line format
+format = "$directory$git_branch$git_commit$git_state$git_metrics$git_status$character"
+
+# Maximum vertical density
+add_newline = false
+
+[directory]
+style = "bold cyan"
+use_os_path_sep = false
+home_symbol = "~"
+read_only = " "
+truncation_length = 3
+truncation_symbol = ".../"
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+format = '\[[$symbol$branch(:$remote_branch)]($style)\] '
+disabled = false
+
+[git_commit]
+commit_hash_length = 4
+only_detached = true
+tag_disabled = true
+tag_symbol = " "
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+
+[git_status]
+format = "([$conflicted$stashed$deleted$renamed$modified$staged$untracked$ahead_behind]($style))"
+up_to_date = ""
+conflicted = "= $count "
+ahead = "⇡ $count "
+behind = "⇣ $count "
+deleted = "󰆴 $count "
+diverged = "󰹹 ⇡${ahead_count}⇣${behind_count} "
+stashed = " $count "
+modified = " $count "
+staged = "[ $count ](green)"
+renamed = " $count "
+untracked = " $count "
+
+[character]
+format = "$symbol "
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"

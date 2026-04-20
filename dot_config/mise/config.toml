@@ -1,0 +1,22 @@
+[settings]
+
+[tools]
+go = "latest"
+"go:github.com/go-delve/delve/cmd/dlv" = "latest"
+"go:github.com/golangci/golangci-lint/cmd/golangci-lint" = "latest"
+"go:golang.org/x/tools/cmd/goimports" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+"go:mvdan.cc/gofumpt" = "latest"
+
+node = "lts"
+"npm:bash-language-server" = "latest"
+"npm:@github/copilot-language-server" = "latest"
+"npm:prettier" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:yaml-language-server" = "latest"
+
+rust = "stable"
+
+hugo = "0.155.3"
+opentofu = "latest"
+terraform = "1.11.4"

@@ -1,0 +1,9 @@
+{
+  plugin_cache_dir = "${APPDATA}/terraform.d/plugin-cache"
+
+  provider_installation {
+    dev_overrides {}
+  }
+
+  direct {}
+}

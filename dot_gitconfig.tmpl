@@ -1,0 +1,99 @@
+[user]
+  name = {{ .name }}
+  email = {{ .email }}
+  signingkey = {{ printf "%s.pub" .key }}
+[core]
+  ignorecase = false
+  autocrlf = input
+  excludesfile = ~/.gitignore
+  untrackedCache = true
+{{- if eq .chezmoi.os "windows" }}
+  fsmonitor = true
+  sshCommand = C:/PROGRA~1/OpenSSH/ssh.exe
+[http]
+  sslBackend = schannel
+{{- end }}
+[column]
+  ui = auto
+[gpg]
+  format = ssh
+{{- if eq .chezmoi.os "windows" }}
+[gpg "ssh"]
+  program = C:/PROGRA~1/OpenSSH/ssh-keygen.exe
+{{- end }}
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+  external = difft
+  tool = difftastic
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft --tab-width 2 --display side-by-side "$LOCAL" "$REMOTE"
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  ff = only
+  conflictStyle = zdiff3
+  tool = mergiraf
+[mergetool]
+  trustExitCode = true
+[mergetool "mergiraf"]
+  cmd = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+[mergetool "vscode"]
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[merge "mergiraf"]
+  name = mergiraf
+  driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+[protocol]
+  version = 2
+[init]
+  defaultBranch = main
+[commit]
+  verbose = true
+  gpgsign = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = false
+[pull]
+  rebase = true
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+[checkout]
+  defaultRemote = origin
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[help]
+  autocorrect = prompt
+[alias]
+  st = status -sb
+  ll = log --oneline
+  last = log -1 HEAD --stat
+  hist = log --graph --abbrev-commit --decorate --date=short \
+    --format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
+    --branches --remotes --tags
+  sha = rev-parse HEAD
+  ftg = log -n 1 --format=%H --invert-grep --grep='^fixup! ' HEAD
+  patch = diff --no-ext-diff
+{{- if .work.enabled }}
+[includeIf "gitdir:{{ .code.path }}/github.com/lexisnexis-iac/"]
+  path = ~/.gitconfigwork
+[includeIf "gitdir:{{ .code.path }}/github.com/lexisnexis-rba/"]
+  path = ~/.gitconfigwork
+[includeIf "hasconfig:remote.*.url:*github.com:risk-*/**"]
+  path = ~/.gitconfiglnrisk
+{{- end }}

@@ -1,0 +1,32 @@
+{{- $is_work := promptBool "Work machine" -}}
+
+[git]
+  autoCommit = false
+  autoPush = false
+
+[data]
+  name = "Steve Hipwell"
+  email = "steve.hipwell@gmail.com"
+  username = "hipwells"
+  key = "~/.ssh/id_ed25519"
+  isWSL = {{ and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+
+[data.work]
+  enabled = {{ $is_work }}
+  email = "steve.hipwell@lexisnexisrisk.com"
+  key = "~/.ssh/lnrisk_ed25519"
+
+[data.code]
+  path = {{ if eq .chezmoi.os "windows" -}} "~/Code" {{- else -}} "~/code" {{- end }}
+
+[cd]
+  command = {{ if eq .chezmoi.os "windows" -}} "pwsh" {{- else -}} "zsh" {{- end }}
+
+[edit]
+  command = "hx"
+
+{{ if eq .chezmoi.os "windows" -}}
+[interpreters.ps1]
+  command = "pwsh"
+  args = ["-NoProfile"]
+{{- end }}

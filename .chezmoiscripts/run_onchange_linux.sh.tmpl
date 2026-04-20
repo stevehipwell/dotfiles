@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# apt.txt hash: {{ include "pkg/apt.txt" | sha256sum }}
+# brewfile hash: {{ include "pkg/brewfile" | sha256sum }}
+
+# Docker APT source
+if command -v apt-get >/dev/null 2>&1 && [[ ! -f /etc/apt/sources.list.d/docker.list ]]; then
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian $(. /etc/os-release && echo "${VERSION_CODENAME}") stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+fi
+
+# APT - system packages
+if command -v apt-get >/dev/null 2>&1; then
+  sudo apt-get update -qq
+  xargs -a "{{ joinPath .chezmoi.sourceDir "pkg/apt.txt" }}" sudo apt-get install -y -qq
+fi
+
+# Docker - add user to group
+if getent group docker >/dev/null 2>&1 && ! id -nG "${USER}" | grep -qw docker; then
+  sudo usermod -aG docker "${USER}"
+fi
+
+# Homebrew - user packages
+if command -v brew >/dev/null 2>&1; then
+  brew bundle --file="{{ joinPath .chezmoi.sourceDir "pkg/brewfile" }}"
+fi

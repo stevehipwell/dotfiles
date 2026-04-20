@@ -1,0 +1,17 @@
+{{- if not .work.enabled }}
+Host *
+  IdentityFile {{ .key }}
+  AddKeysToAgent yes
+  IdentitiesOnly yes
+{{- else }}
+Host lnrisk.github.com
+  HostName github.com
+  IdentityFile {{ .work.key }}
+  AddKeysToAgent yes
+  IdentitiesOnly yes
+
+Host !lnrisk.github.com
+  IdentityFile {{ .key }}
+  AddKeysToAgent yes
+  IdentitiesOnly yes
+{{- end }}

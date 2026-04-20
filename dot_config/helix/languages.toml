@@ -1,0 +1,110 @@
+[[language]]
+name = "bash"
+auto-format = true
+language-servers = ["bash-language-server", "copilot"]
+formatter = { command = "shfmt", args = ["-i", "2", "-ci"] }
+
+[[language]]
+name = "go"
+auto-format = true
+language-servers = ["gopls", "copilot"]
+formatter = { command = "goimports" }
+
+[[language]]
+name = "gotmpl"
+scope = "source.gotmpl"
+file-types = [{ glob = "templates/**/*.yaml" }, { glob = "templates/**/*.tpl" }]
+language-servers = ["helm-ls", "copilot"]
+formatter = { command = "yamlfmt", args = ["-quiet", "-in"] }
+
+[[language]]
+name = "hcl"
+auto-format = true
+language-servers = ["terraform-ls", "copilot"]
+
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server", "copilot"]
+formatter = { command = "prettier", args = ["--parser", "json"] }
+
+[[language]]
+name = "jsonc"
+language-servers = ["vscode-json-language-server", "copilot"]
+
+[[language]]
+name = "just"
+language-servers = ["just-lsp", "copilot"]
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "markdown-oxide", "rumdl", "copilot"]
+formatter = { command = "rumdl", args = ["fmt", "--quiet", "--stdin"] }
+
+[[language]]
+name = "rust"
+auto-format = true
+language-servers = ["rust-analyzer", "copilot"]
+
+[[language]]
+name = "tfvars"
+auto-format = true
+language-servers = ["terraform-ls", "copilot"]
+
+[[language]]
+name = "toml"
+language-servers = ["tombi", "copilot"]
+formatter = { command = "tombi", args = ["format", "-"] }
+
+[[language]]
+name = "yaml"
+language-servers = ["yaml-language-server", "copilot"]
+formatter = { command = "yamlfmt", args = ["-quiet", "-in"] }
+
+[language-server.bash-language-server]
+command = "bash-language-server"
+args = ["start"]
+
+[language-server.copilot]
+command = "copilot-language-server"
+args = ["--stdio"]
+
+[language-server.gopls]
+command = "gopls"
+config = { "ui.completion.usePlaceholders" = true, "formatting.gofumpt" = true }
+
+[language-server.helm-ls]
+command = "helm_ls"
+args = ["serve"]
+
+[language-server.just-lsp]
+command = "just-lsp"
+
+[language-server.rumdl]
+command = "rumdl"
+args = ["server"]
+
+[language-server.terraform-ls]
+command = "terraform-ls"
+args = ["serve"]
+
+[language-server.vscode-json-language-server]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+
+[language-server.vscode-json-language-server.config.json]
+validate = { enable = true }
+format = { enable = false }
+
+[language-server.vscode-json-language-server.config.json.schemas]
+# Add any JSON schemas you use frequently
+
+[language-server.yaml-language-server]
+command = "yaml-language-server"
+args = ["--stdio"]
+
+[language-server.yaml-language-server.config.yaml]
+format = { enable = false }
+validation = true
+schemas = { "kubernetes" = "*.k8s.yaml", "https://json.schemastore.org/kustomization.json" = "kustomization.yaml", "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/all.json" = [
+  "k8s/*.yaml"
+] }

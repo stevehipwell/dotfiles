@@ -1,0 +1,14 @@
+# shellcheck shell=bash
+
+# if not interactive return early
+[[ $- != *i* ]] && return
+
+# source shared code
+# shellcheck source=dot_config/shell/env.sh
+[[ -f "${HOME}/.config/shell/env.sh" ]] && source ~/.config/shell/env.sh
+# shellcheck source=dot_config/shell/aliases.sh
+[[ -f "${HOME}/.config/shell/aliases.sh" ]] && source ~/.config/shell/aliases.sh
+# shellcheck source=dot_config/shell/functions.sh
+[[ -f "${HOME}/.config/shell/functions.sh" ]] && source ~/.config/shell/functions.sh
+# shellcheck source=dot_config/shell/init.sh
+[[ -f "${HOME}/.config/shell/init.sh" ]] && source ~/.config/shell/init.sh

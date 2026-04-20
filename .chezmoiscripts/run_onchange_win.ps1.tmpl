@@ -1,0 +1,10 @@
+Set-StrictMode -Version latest
+$ErrorActionPreference="Stop"
+
+# winget.json hash: {{ include "pkg/winget.json" | sha256sum }}
+# scoop.json hash: {{ include "pkg/scoop.json" | sha256sum }}
+
+winget import -i "{{ joinPath .chezmoi.sourceDir "pkg/winget.json" | replace "\\" "/" }}" --disable-interactivity --accept-package-agreements --accept-source-agreements
+scoop import "{{ joinPath .chezmoi.sourceDir "pkg/scoop.json" | replace "\\" "/" }}"
+
+mise install --yes

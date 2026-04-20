@@ -1,0 +1,57 @@
+theme = "catppuccin_macchiato"
+
+[editor]
+line-number = "relative"
+cursorline = true
+color-modes = true
+true-color = true
+idle-timeout = 200
+bufferline = "always"
+auto-format = true
+completion-replace = true
+end-of-line-diagnostics = "hint"
+
+[editor.cursor-shapes]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+character = "¦"
+
+[editor.statusline]
+left = [
+  "mode",
+  "spacer",
+  "spinner",
+  "file-name",
+  "read-only-indicator",
+  "file-modified-indicator"
+]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-type"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.file-picker]
+hidden = false
+
+[editor.inline-diagnostics]
+cursor-line = "info"
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = "↪"
+
+[keys.normal]
+C-s = ":write"  # save without leaving normal mode
+
+[keys.normal.space]
+q = ":quit"  # quick quit
+Q = ":quit!"  # force quit
+s = ":write"  # save
+S = ":write-all"  # save all buffers
+
+[keys.insert]
+C-s = ["normal_mode", ":write"]  # save from insert mode

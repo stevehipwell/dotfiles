@@ -1,0 +1,13 @@
+{
+  "alias": {
+    "upgrade": "scoop-upgrade",
+    "ls": "scoop-ls"
+  },
+  "use_lessmsi": true,
+  "scoop_branch": "master",
+  "scoop_repo": "https://github.com/ScoopInstaller/Scoop",
+  "use_sqlite_cache": true,
+  "debug": false,
+  "aria2-enabled": false,
+  "cat_style": "auto"
+}

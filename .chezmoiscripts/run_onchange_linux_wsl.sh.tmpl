@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# wsl.conf hash: {{ include "dot_config/wsl/wsl.conf.tmpl" | sha256sum }}
+
+sudo cp -f "${HOME}/.config/wsl/wsl.conf" /etc/wsl.conf
+
+win_home="/mnt/c/Users/{{ .username }}"
+keys=({{ .key | base }}{{ if .work.enabled }} {{ .work.key | base }}{{ end }})
+
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+for key in "${keys[@]}"; do
+  cp -f "${win_home}/.ssh/${key}" ~/.ssh/
+  cp -f "${win_home}/.ssh/${key}.pub" ~/.ssh/
+  chmod 600 ~/.ssh/"${key}"
+  chmod 644 ~/.ssh/"${key}.pub"
+done

@@ -1,0 +1,322 @@
+{
+  "buckets": [
+    {
+      "Name": "main",
+      "Source": "https://github.com/ScoopInstaller/Main"
+    },
+    {
+      "Name": "extras",
+      "Source": "https://github.com/ScoopInstaller/Extras"
+    },
+    {
+      "Name": "nerd-fonts",
+      "Source": "https://github.com/matthewjberger/scoop-nerd-fonts"
+    }
+  ],
+  "apps": [
+    {
+      "Name": "7zip",
+      "Source": "main"
+    },
+    {
+      "Name": "ah",
+      "Source": "main"
+    },
+    {
+      "Name": "atuin",
+      "Source": "main"
+    },
+    {
+      "Name": "aws-iam-authenticator",
+      "Source": "main"
+    },
+    {
+      "Name": "aws-session-manager-plugin",
+      "Source": "extras"
+    },
+    {
+      "Name": "azure-cli",
+      "Source": "main"
+    },
+    {
+      "Name": "azure-kubelogin",
+      "Source": "main"
+    },
+    {
+      "Name": "bat",
+      "Source": "main"
+    },
+    {
+      "Name": "bom",
+      "Source": "main"
+    },
+    {
+      "Name": "buf",
+      "Source": "main"
+    },
+    {
+      "Name": "chezmoi",
+      "Source": "main"
+    },
+    {
+      "Name": "conftest",
+      "Source": "main"
+    },
+    {
+      "Name": "copilot-cli",
+      "Source": "main"
+    },
+    {
+      "Name": "cosign",
+      "Source": "main"
+    },
+    {
+      "Name": "difftastic",
+      "Source": "main"
+    },
+    {
+      "Name": "editorconfig",
+      "Source": "main"
+    },
+    {
+      "Name": "envsubst",
+      "Source": "main"
+    },
+    {
+      "Name": "firacode-nf",
+      "Source": "nerd-fonts"
+    },
+    {
+      "Name": "firacode-nf-mono",
+      "Source": "nerd-fonts"
+    },
+    {
+      "Name": "gh",
+      "Source": "main"
+    },
+    {
+      "Name": "gitsign",
+      "Source": "main"
+    },
+    {
+      "Name": "glow",
+      "Source": "main"
+    },
+    {
+      "Name": "go-containerregistry",
+      "Source": "main"
+    },
+    {
+      "Name": "gomplate",
+      "Source": "main"
+    },
+    {
+      "Name": "goreleaser",
+      "Source": "main"
+    },
+    {
+      "Name": "gpg",
+      "Source": "main"
+    },
+    {
+      "Name": "grype",
+      "Source": "main"
+    },
+    {
+      "Name": "gzip",
+      "Source": "main"
+    },
+    {
+      "Name": "hadolint",
+      "Source": "main"
+    },
+    {
+      "Name": "helix",
+      "Source": "main"
+    },
+    {
+      "Name": "helm",
+      "Source": "main"
+    },
+    {
+      "Name": "helm-chart-releaser",
+      "Source": "main"
+    },
+    {
+      "Name": "helm-chart-testing",
+      "Source": "main"
+    },
+    {
+      "Name": "helm-docs",
+      "Source": "main"
+    },
+    {
+      "Name": "helm-ls",
+      "Source": "extras"
+    },
+    {
+      "Name": "jfrog",
+      "Source": "main"
+    },
+    {
+      "Name": "jj",
+      "Source": "main"
+    },
+    {
+      "Name": "jq",
+      "Source": "main"
+    },
+    {
+      "Name": "jsonschema",
+      "Source": "main"
+    },
+    {
+      "Name": "just",
+      "Source": "main"
+    },
+    {
+      "Name": "k9s",
+      "Source": "main"
+    },
+    {
+      "Name": "kind",
+      "Source": "main"
+    },
+    {
+      "Name": "ko",
+      "Source": "main"
+    },
+    {
+      "Name": "kubeconform",
+      "Source": "main"
+    },
+    {
+      "Name": "kubectl",
+      "Source": "main"
+    },
+    {
+      "Name": "kubectx",
+      "Source": "main"
+    },
+    {
+      "Name": "kubens",
+      "Source": "main"
+    },
+    {
+      "Name": "kustomize",
+      "Source": "main"
+    },
+    {
+      "Name": "markdown-oxide",
+      "Source": "main"
+    },
+    {
+      "Name": "marksman",
+      "Source": "main"
+    },
+    {
+      "Name": "mdq",
+      "Source": "main"
+    },
+    {
+      "Name": "mergiraf",
+      "Source": "main"
+    },
+    {
+      "Name": "mise",
+      "Source": "main"
+    },
+    {
+      "Name": "nerdctl",
+      "Source": "main"
+    },
+    {
+      "Name": "openssl",
+      "Source": "main"
+    },
+    {
+      "Name": "oras",
+      "Source": "extras"
+    },
+    {
+      "Name": "osv-scanner",
+      "Source": "main"
+    },
+    {
+      "Name": "psreadline",
+      "Source": "extras"
+    },
+    {
+      "Name": "rumdl",
+      "Source": "main"
+    },
+    {
+      "Name": "rustup",
+      "Source": "main"
+    },
+    {
+      "Name": "saml2aws",
+      "Source": "main"
+    },
+    {
+      "Name": "shellcheck",
+      "Source": "main"
+    },
+    {
+      "Name": "shfmt",
+      "Source": "main"
+    },
+    {
+      "Name": "starship",
+      "Source": "main"
+    },
+    {
+      "Name": "syft",
+      "Source": "main"
+    },
+    {
+      "Name": "terraform-docs",
+      "Source": "main"
+    },
+    {
+      "Name": "terraform-ls",
+      "Source": "main"
+    },
+    {
+      "Name": "tflint",
+      "Source": "main"
+    },
+    {
+      "Name": "tombi",
+      "Source": "main"
+    },
+    {
+      "Name": "uutils-coreutils",
+      "Source": "main"
+    },
+    {
+      "Name": "uv",
+      "Source": "main"
+    },
+    {
+      "Name": "vacuum",
+      "Source": "main"
+    },
+    {
+      "Name": "vault",
+      "Source": "main"
+    },
+    {
+      "Name": "yamlfmt",
+      "Source": "main"
+    },
+    {
+      "Name": "yq",
+      "Source": "main"
+    },
+    {
+      "Name": "zellij",
+      "Source": "main"
+    }
+  ]
+}

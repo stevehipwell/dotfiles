@@ -1,0 +1,21 @@
+[user]
+name = {{ .name }}
+email = {{ .email }}
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = {{ printf "%s.pub" .key }}
+
+[templates]
+commit_trailers = '''
+format_signed_off_by_trailer(self)'''
+
+[merge-tools.mergiraf]
+merge-args = ["merge", "--jj", "$left", "$right", "$base", "-o", "$output"]
+
+[ui]
+diff.tool = ["difft", "--color=always", "$left", "$right"]
+
+[ui.merge-editor]
+merge-tool = "mergiraf"

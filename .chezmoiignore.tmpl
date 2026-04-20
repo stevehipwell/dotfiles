@@ -1,0 +1,30 @@
+README.md
+
+{{- if eq .chezmoi.os "windows" }}
+.bashrc
+.zshrc
+.config/shell/**
+.chezmoiscripts/*.sh
+pkg/apt.txt
+pkg/brewfile
+{{- else }}
+.wslconf
+.config/powershell/**
+.config/scoop/**
+.chezmoiscripts/*.ps1
+pkg/scoop.json
+pkg/winget.json
+appdata/**
+documents/**
+{{- end }}
+
+{{- if not .isWSL }}
+.chezmoiscripts/run_onchange_linux_wsl.sh
+.config/wsl/**
+{{- end }}
+
+{{- if not .work.enabled }}
+.gitconfiglnrisk
+.gitconfigwork
+.saml2aws
+{{- end }}
