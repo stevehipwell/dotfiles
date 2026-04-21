@@ -10,5 +10,7 @@
 [[ -f "${HOME}/.config/shell/aliases.sh" ]] && source ~/.config/shell/aliases.sh
 # shellcheck source=dot_config/shell/functions.sh
 [[ -f "${HOME}/.config/shell/functions.sh" ]] && source ~/.config/shell/functions.sh
+# shellcheck source=dot_config/shell/completions.sh
+[[ -f "${HOME}/.config/shell/completions.sh" ]] && source ~/.config/shell/completions.sh
 # shellcheck source=dot_config/shell/init.sh
 [[ -f "${HOME}/.config/shell/init.sh" ]] && source ~/.config/shell/init.sh

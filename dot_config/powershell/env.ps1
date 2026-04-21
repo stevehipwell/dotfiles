@@ -1,0 +1,10 @@
+# Environment variables
+$Env:XDG_CONFIG_HOME = "$HOME\.config"
+$Env:XDG_DATA_HOME = "$HOME\.local\share"
+$Env:EDITOR = "hx"
+$Env:VISUAL = "hx"
+$Env:GOPATH = "$HOME\go"
+$Env:GOTELEMETRY = "local"
+$Env:HELIX_CONFIG_DIR = "$HOME\.config\helix"
+$Env:PATH = "$Env:GOPATH\bin;$HOME\.local\bin;$Env:PATH"
+$Env:PSModulePath = "$HOME\scoop\modules;$Env:PSModulePath"

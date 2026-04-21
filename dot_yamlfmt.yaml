@@ -5,3 +5,4 @@ formatter:
   retain_line_breaks_single: true
   eof_newline: true
   force_quote_style: double
+  max_line_length: 0
