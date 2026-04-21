@@ -21,6 +21,12 @@
 [gpg "ssh"]
   program = C:/PROGRA~1/OpenSSH/ssh-keygen.exe
 {{- end }}
+[status]
+  showStash = true
+[log]
+  date = iso
+[blame]
+  coloring = highlightRecent
 [diff]
   algorithm = histogram
   colorMoved = plain
@@ -54,10 +60,15 @@
 [commit]
   verbose = true
   gpgsign = true
+[transfer]
+  fsckObjects = true
+[receive]
+  fsckObjects = true
 [fetch]
   prune = true
   pruneTags = true
   all = false
+  fsckObjects = true
 [pull]
   rebase = true
 [push]
@@ -76,7 +87,7 @@
 [branch]
   sort = -committerdate
 [tag]
-  sort = version:refname
+  sort = -version:refname
 [help]
   autocorrect = prompt
 [alias]
