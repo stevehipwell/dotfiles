@@ -1,0 +1,15 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $config := dict -}}
+{{- if ne (.chezmoi.stdin | trim) "" -}}
+{{- $config = fromJson .chezmoi.stdin -}}
+{{- end -}}
+{{- $config = $config | setValueAtPath (list "alias" "upgrade") "scoop-upgrade" -}}
+{{- $config = $config | setValueAtPath (list "alias" "ls") "scoop-ls" -}}
+{{- $config = $config | setValueAtPath "use_lessmsi" true -}}
+{{- $config = $config | setValueAtPath "scoop_branch" "master" -}}
+{{- $config = $config | setValueAtPath "scoop_repo" "https://github.com/ScoopInstaller/Scoop" -}}
+{{- $config = $config | setValueAtPath "use_sqlite_cache" true -}}
+{{- $config = $config | setValueAtPath "debug" false -}}
+{{- $config = $config | setValueAtPath (list "aria2-enabled") false -}}
+{{- $config = $config | setValueAtPath "cat_style" "auto" -}}
+{{- $config | toPrettyJson }}

@@ -1,0 +1,11 @@
+{{- /* chezmoi:modify-template */ -}}
+{{- $config := dict -}}
+{{- if ne (.chezmoi.stdin | trim) "" -}}
+{{- $config = fromJson .chezmoi.stdin -}}
+{{- end -}}
+{{- $config = $config | setValueAtPath (list "credHelpers" "199475845492.dkr.ecr.eu-west-1.amazonaws.com") "ecr-login" -}}
+{{- $config = $config | setValueAtPath (list "credHelpers" "199475845492.dkr.ecr.us-east-1.amazonaws.com") "ecr-login" -}}
+{{- $config = $config | setValueAtPath (list "credHelpers" "250548764382.dkr.ecr.eu-west-1.amazonaws.com") "ecr-login" -}}
+{{- $config = $config | setValueAtPath (list "credHelpers" "602401143452.dkr.ecr.eu-west-1.amazonaws.com") "ecr-login" -}}
+{{- $config = $config | setValueAtPath (list "credHelpers" "cgr.dev") "cgr" -}}
+{{- $config | toPrettyJson }}

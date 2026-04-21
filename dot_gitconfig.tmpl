@@ -41,12 +41,12 @@
 [mergetool]
   trustExitCode = true
 [mergetool "mergiraf"]
-  cmd = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+  cmd = mergiraf solve "$MERGED"
 [mergetool "vscode"]
   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 [merge "mergiraf"]
   name = mergiraf
-  driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+  driver = mergiraf merge --git "%O" "%A" "%B" -s "%S" -x "%X" -y "%Y" -p "%P" -l "%L"
 [protocol]
   version = 2
 [init]
