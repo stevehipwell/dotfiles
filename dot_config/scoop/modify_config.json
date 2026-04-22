@@ -12,4 +12,4 @@
 {{- $config = $config | setValueAtPath "debug" false -}}
 {{- $config = $config | setValueAtPath (list "aria2-enabled") false -}}
 {{- $config = $config | setValueAtPath "cat_style" "auto" -}}
-{{- $config | toPrettyJson }}
+{{- $config | toPrettyJson | replace "\n" "\r\n" -}}

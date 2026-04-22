@@ -235,6 +235,10 @@
       "Source": "main"
     },
     {
+      "Name": "pnpm",
+      "Source": "main"
+    },
+    {
       "Name": "oras",
       "Source": "extras"
     },

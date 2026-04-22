@@ -97,9 +97,13 @@
   hist = log --graph --abbrev-commit --decorate --date=short \
     --format=format:'%C(bold cyan)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)' \
     --branches --remotes --tags
-  sha = rev-parse HEAD
-  ftg = log -n 1 --format=%H --invert-grep --grep='^fixup! ' HEAD
   patch = diff --no-ext-diff
+  sha = rev-parse HEAD
+  fixupsha = log -n 1 --format=%H --invert-grep --grep='^fixup! ' HEAD
+{{- if ne .chezmoi.os "windows" }}
+  fixup = "!f(){ git commit --fixup=\"$(git fixupsha)\" \"$@\"; }; f"
+  tagp = "!f(){ git tag \"$1\" && git push origin \"$1\"; }; f"
+{{- end }}
 {{- if .work.enabled }}
 [includeIf "gitdir:{{ .code.path }}/github.com/lexisnexis-iac/"]
   path = ~/.gitconfigwork
