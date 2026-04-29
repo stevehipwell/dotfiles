@@ -100,7 +100,10 @@
   patch = diff --no-ext-diff
   sha = rev-parse HEAD
   fixupsha = log -n 1 --format=%H --invert-grep --grep='^fixup! ' HEAD
-{{- if ne .chezmoi.os "windows" }}
+{{- if eq .chezmoi.os "windows" }}
+  fixup = commit --fixup
+  tagp = push origin
+{{- else }}
   fixup = "!f(){ git commit --fixup=\"$(git fixupsha)\" \"$@\"; }; f"
   tagp = "!f(){ git tag \"$1\" && git push origin \"$1\"; }; f"
 {{- end }}

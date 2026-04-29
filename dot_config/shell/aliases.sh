@@ -6,6 +6,7 @@ alias za="zellij attach || zellij"
 alias g="git"
 alias cm="chezmoi"
 alias k="kubectl"
+alias j="just"
 
 # Scripting
 alias repl="bash --norc"
