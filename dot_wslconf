@@ -32,7 +32,7 @@ localhostforwarding=true
 # debugConsole=true
 
 # GUI application support
-guiApplications=true
+# guiApplications=true
 
 # Enable experimental features
 [experimental]

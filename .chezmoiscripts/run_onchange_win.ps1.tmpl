@@ -1,10 +1,28 @@
 Set-StrictMode -Version latest
 $ErrorActionPreference="Stop"
 
+function Write-Step {
+	param([string]$Message)
+	$timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+	Write-Host "[$timestamp] $Message"
+}
+
 # winget.json hash: {{ include "pkg/winget.json" | sha256sum }}
 # scoop.json hash: {{ include "pkg/scoop.json" | sha256sum }}
 
+Write-Step "Starting Windows on-change package sync"
+Write-Step "Importing WinGet packages"
 winget import -i "{{ joinPath .chezmoi.sourceDir "pkg/winget.json" | replace "\\" "/" }}" --disable-interactivity --accept-package-agreements --accept-source-agreements
+Write-Step "Importing Scoop packages"
 scoop import "{{ joinPath .chezmoi.sourceDir "pkg/scoop.json" | replace "\\" "/" }}"
 
-mise install --yes
+$langToolsScriptPath = "{{ joinPath .chezmoi.sourceDir "scripts/update_lang_tools.ps1" | replace "\\" "/" }}"
+if (Test-Path -Path $langToolsScriptPath) {
+	Write-Step "Running shared language tools updater"
+	& $langToolsScriptPath
+}
+else {
+	Write-Step "Skipping language tools update (scripts/update_lang_tools.ps1 missing)"
+}
+
+Write-Step "Windows on-change package sync complete"

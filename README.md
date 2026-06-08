@@ -10,7 +10,7 @@ Cross-platform dotfiles managed by [chezmoi](https://www.chezmoi.io/), targeting
 |---|---|---|
 | System packages | [WinGet](pkg/winget.json) | [APT](pkg/apt.txt) + Docker Engine |
 | CLI tools | [Scoop](pkg/scoop.json) | [Homebrew](pkg/brewfile) |
-| Runtimes & LSPs | [mise](dot_config/mise/config.toml) | [mise](dot_config/mise/config.toml) |
+| Language tools | [fnm](https://github.com/Schniz/fnm) + [npm globals](pkg/npm-global.txt) + [go tools](pkg/go-tools.txt) | [fnm](https://github.com/Schniz/fnm) + [npm globals](pkg/npm-global.txt) + [go tools](pkg/go-tools.txt) |
 | Shell | PowerShell 7 | Zsh (primary) / Bash |
 | Editor | Helix (+ VS Code) | Helix (+ VS Code) |
 | Multiplexer | Zellij | Zellij |
@@ -36,7 +36,6 @@ dot_config/
   helix/
     config.toml             # Editor settings + keybindings
     languages.toml          # Language servers + formatters
-  mise/config.toml          # Runtime versions + tools
   powershell/profile.ps1    # PowerShell profile (Windows)
   scoop/config.json         # Scoop settings
   shell/
@@ -61,6 +60,8 @@ dot_yamlfmt                 # yamlfmt formatter config
 pkg/
   apt.txt                   # Debian packages (inc. Docker Engine)
   brewfile                  # Homebrew formulas
+  go-tools.txt              # Go CLI tools (`go install` list)
+  npm-global.txt            # Global npm packages
   scoop.json                # Scoop apps + buckets
   winget.json               # WinGet system apps
 ```
@@ -90,16 +91,13 @@ Chezmoi prompts for `Work machine` on init and auto-detects OS/WSL. Template var
 - **Git**: SSH signing, difftastic (external diff + tool), mergiraf (merge tool + driver), VS Code as alternate diff/merge tool.
 - **Jujutsu (jj)**: SSH signing, difftastic diff, mergiraf merge editor.
 
-### Mise-managed Runtimes
+### Language Tool Management
 
-| Runtime | Tools installed via it |
+| Area | Source of truth |
 |---|---|
-| Go | gopls, goimports, dlv, golangci-lint, gofumpt |
-| Node (LTS) | yaml-language-server, vscode-langservers-extracted, prettier, copilot-language-server, bash-language-server |
-| Rust (stable) | just-lsp |
-| Hugo | — |
-| Terraform | — |
-| OpenTofu | — |
+| Node runtime | System package manager (`nodejs-lts` on Scoop, `node` on Homebrew) + `fnm` for project-level switching |
+| Global npm packages | `pkg/npm-global.txt` |
+| Go CLI tools | `pkg/go-tools.txt` |
 
 ## Onboarding a New Machine
 
@@ -125,12 +123,6 @@ This will:
 2. Deploy all config files
 3. Run `winget import` and `scoop import` to install packages
 
-After apply, install mise-managed tools:
-
-```powershell
-mise install
-```
-
 ### Linux / WSL2
 
 ```shell
@@ -150,9 +142,6 @@ This will:
 After apply:
 
 ```shell
-# Install mise-managed runtimes and tools
-mise install
-
 # If Docker was just installed, activate group membership
 newgrp docker
 ```
@@ -172,9 +161,10 @@ wsl --shutdown
 |---|---|
 | APT | Add to `pkg/apt.txt` (alpha-sorted) |
 | Homebrew | Add to `pkg/brewfile` (alpha-sorted) |
+| Go tools | Add to `pkg/go-tools.txt` (one `module@version` per line) |
+| npm globals | Add to `pkg/npm-global.txt` (one package per line) |
 | Scoop | Add to `pkg/scoop.json` apps array (alpha-sorted) |
 | WinGet | Add to `pkg/winget.json` Packages array (alpha-sorted) |
-| mise | Add to `dot_config/mise/config.toml` (alpha-sorted within block) |
 
 Then run `chezmoi apply` to trigger the `run_onchange` scripts.
 
@@ -187,7 +177,7 @@ Then run `chezmoi apply` to trigger the `run_onchange` scripts.
 
 1. Add `[[language]]` block to `dot_config/helix/languages.toml`
 2. Add `[language-server.name]` definition if not built-in
-3. Install the language server via mise, brew, or scoop as appropriate
+3. Install the language server via `pkg/go-tools.txt`, `pkg/npm-global.txt`, brew, or scoop as appropriate
 
 ### Adding a git includeIf
 
@@ -212,18 +202,27 @@ Chezmoi uses naming conventions: `dot_` → `.`, `.tmpl` → template, `symlink_
 
 ## Day-to-Day Usage
 
-### Mise
+### Node & Go Tools
 
 ```shell
-mise install          # Install all tools defined in config.toml
-mise upgrade          # Upgrade all tools to latest matching versions
-mise upgrade go node  # Upgrade specific tools
-mise outdated         # Show tools with newer versions available
-mise use go@latest    # Pin a tool version
-mise ls               # List installed tools
+fnm install --lts            # Install latest LTS Node via fnm
+fnm default lts-latest       # Set your fnm default
+fnm use --install-if-missing # Use project version file when present
 ```
 
-For pinned versions (e.g. `hugo`, `terraform`), update the version in `dot_config/mise/config.toml` first, then run `mise install`.
+Global npm packages and Go CLI tools are installed/updated from `pkg/npm-global.txt` and `pkg/go-tools.txt` during `chezmoi apply`.
+
+To update language tools on demand without running full `chezmoi apply`:
+
+```powershell
+# Windows (from repo root)
+pwsh -File .\scripts\update_lang_tools.ps1
+```
+
+```shell
+# Linux/WSL (from repo root)
+bash ./scripts/update_lang_tools.sh
+```
 
 ### Chezmoi
 

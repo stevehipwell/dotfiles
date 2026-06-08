@@ -83,6 +83,10 @@
       "Source": "main"
     },
     {
+      "Name": "fnm",
+      "Source": "main"
+    },
+    {
       "Name": "firacode-nf",
       "Source": "nerd-fonts"
     },
@@ -128,6 +132,10 @@
     },
     {
       "Name": "hadolint",
+      "Source": "main"
+    },
+    {
+      "Name": "hugo-extended",
       "Source": "main"
     },
     {
@@ -223,15 +231,19 @@
       "Source": "main"
     },
     {
-      "Name": "mise",
-      "Source": "main"
-    },
-    {
       "Name": "nerdctl",
       "Source": "main"
     },
     {
+      "Name": "nodejs-lts",
+      "Source": "main"
+    },
+    {
       "Name": "openssl",
+      "Source": "main"
+    },
+    {
+      "Name": "opentofu",
       "Source": "main"
     },
     {
@@ -276,6 +288,10 @@
     },
     {
       "Name": "syft",
+      "Source": "main"
+    },
+    {
+      "Name": "terraform",
       "Source": "main"
     },
     {

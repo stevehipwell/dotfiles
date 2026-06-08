@@ -28,3 +28,9 @@ fi
 if command -v brew >/dev/null 2>&1; then
   brew bundle --file="{{ joinPath .chezmoi.sourceDir "pkg/brewfile" }}"
 fi
+
+# Language tools (Go + npm globals)
+lang_tools_script="{{ joinPath .chezmoi.sourceDir "scripts/update_lang_tools.sh" }}"
+if [[ -f "${lang_tools_script}" ]]; then
+  bash "${lang_tools_script}"
+fi

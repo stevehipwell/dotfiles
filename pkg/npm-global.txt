@@ -1,0 +1,6 @@
+# Global npm packages managed by chezmoi apply scripts
+@github/copilot-language-server
+bash-language-server
+prettier
+vscode-langservers-extracted
+yaml-language-server
