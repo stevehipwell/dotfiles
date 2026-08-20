@@ -18,13 +18,13 @@ if (Test-Path -Path $npmGlobalPackagesPath) {
 		Where-Object { $_ -and -not $_.StartsWith("#") }
 
 	if ($npmGlobalPackages.Count -gt 0) {
-		if (Get-Command -Name pnpm -ErrorAction SilentlyContinue) {
-			Write-Step "Using pnpm for global npm packages with --ignore-scripts"
-			pnpm add --yes --global --ignore-scripts @npmGlobalPackages
-			pnpm update --yes --global --ignore-scripts @npmGlobalPackages
+		if (Get-Command -Name npm -ErrorAction SilentlyContinue) {
+			Write-Step "Using npm for global packages with --ignore-scripts"
+			npm install --global --ignore-scripts @npmGlobalPackages
+			npm update --global --ignore-scripts @npmGlobalPackages
 		}
 		else {
-			Write-Step "Skipping npm globals (pnpm not found)"
+			Write-Step "Skipping npm globals (npm not found)"
 		}
 	}
 	else {

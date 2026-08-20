@@ -235,19 +235,11 @@
       "Source": "main"
     },
     {
-      "Name": "nodejs-lts",
-      "Source": "main"
-    },
-    {
       "Name": "openssl",
       "Source": "main"
     },
     {
       "Name": "opentofu",
-      "Source": "main"
-    },
-    {
-      "Name": "pnpm",
       "Source": "main"
     },
     {

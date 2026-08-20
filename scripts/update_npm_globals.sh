@@ -15,12 +15,12 @@ if [[ -f "${npm_global_packages_file}" ]]; then
   mapfile -t npm_global_packages < <(grep -Ev '^\s*(#|$)' "${npm_global_packages_file}" || true)
 
   if (( ${#npm_global_packages[@]} > 0 )); then
-    if command -v pnpm >/dev/null 2>&1; then
-      log_step "Using pnpm for global npm packages with --ignore-scripts"
-      pnpm add --yes --global --ignore-scripts "${npm_global_packages[@]}"
-      pnpm update --yes --global --ignore-scripts "${npm_global_packages[@]}"
+    if command -v npm >/dev/null 2>&1; then
+      log_step "Using npm for global packages with --ignore-scripts"
+      npm install --global --ignore-scripts "${npm_global_packages[@]}"
+      npm update --global --ignore-scripts "${npm_global_packages[@]}"
     else
-      log_step "Skipping npm globals (pnpm not found)"
+      log_step "Skipping npm globals (npm not found)"
     fi
   else
     log_step "No npm global packages listed"
